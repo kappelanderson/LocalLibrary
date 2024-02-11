@@ -38,7 +38,8 @@ AuthorSchema.virtual("date_of_birth_formatted").get(function () {
 AuthorSchema.virtual("date_of_death_formatted").get(function () {
 
   if(this.date_of_death){
-    return DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) 
+    return DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED)
+
   }
   else if(!this.date_of_birth){
     return ''
@@ -47,6 +48,32 @@ AuthorSchema.virtual("date_of_death_formatted").get(function () {
     return 'present'
   }
 });
+
+
+AuthorSchema.virtual("date_of_birth_formatted_input").get(function () {
+  if(!this.date_of_birth){
+    return ''
+  }
+  return DateTime.fromJSDate(this.date_of_birth).toFormat('yyyy-MM-dd');
+
+});
+
+AuthorSchema.virtual("date_of_death_formatted_input").get(function () {
+
+  if(this.date_of_death){
+    return DateTime.fromJSDate(this.date_of_birth).toFormat('yyyy-MM-dd');
+
+
+  }
+  else if(!this.date_of_birth){
+    return ''
+  }
+  else{
+    return 'present'
+  }
+});
+
+
 
 // Export model
 module.exports = mongoose.model("Author", AuthorSchema);

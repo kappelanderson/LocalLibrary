@@ -132,7 +132,7 @@ exports.book_create_post = [
       // Get all authors and genres for form.
       const [allAuthors, allGenres] = await Promise.all([
         Author.find().sort({ family_name: 1 }).exec(),
-        Genre.find().sort({ name: 1 }).exec(),
+        Gernres.find().sort({ name: 1 }).exec(),
       ]);
 
       // Mark our selected genres as checked.
@@ -277,7 +277,7 @@ exports.book_update_post = [
       // Get all authors and genres for form
       const [allAuthors, allGenres] = await Promise.all([
         Author.find().sort({ family_name: 1 }).exec(),
-        Genre.find().sort({ name: 1 }).exec(),
+        Gernres.find().sort({ name: 1 }).exec(),
       ]);
 
       // Mark our selected genres as checked.
